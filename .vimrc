@@ -4,6 +4,7 @@ set relativenumber
 set background=dark
 set tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab
 
+noremap <leader>y "*y
 colorscheme gruvbox
 
 call plug#begin('~/.vim/plugged')
