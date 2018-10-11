@@ -3,6 +3,15 @@ set number
 set relativenumber
 set background=dark
 set tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab
+set path+=**
+set wildmenu
+set autochdir
+set colorcolumn=80
+set textwidth=80
+highlight ColorColumn guibg=red
+set cursorline
+set cursorcolumn
+
 
 noremap <leader>y "*y
 colorscheme gruvbox
@@ -27,3 +36,4 @@ let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
 
 let g:ag_working_path_mode="r"
+let g:netrw_banner = 0
