@@ -36,3 +36,4 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 
 let g:ag_working_path_mode="r"
 let g:netrw_banner = 0
+let g:gitgutter_max_signs = 500
