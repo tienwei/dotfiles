@@ -5,7 +5,6 @@ set background=dark
 set tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab
 set path+=**
 set wildmenu
-set autochdir
 set colorcolumn=80
 set textwidth=80
 highlight ColorColumn guibg=red
