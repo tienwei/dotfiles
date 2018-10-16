@@ -6,9 +6,9 @@ set pastetoggle=<F2>
 set tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab
 set path+=**
 set wildmenu
-set colorcolumn=80
+set cc=+1
 set textwidth=80
-highlight ColorColumn guibg=red
+hi ColorColumn ctermbg=LightBlue guibg=red
 set cursorline
 set cursorcolumn
 
@@ -41,17 +41,31 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 map  <F7> mzgg=G`z
 
-noremap <leader>cy "*Y
-noremap <leader>cd "*D
-noremap <leader>cp "*P
+noremap <leader>y "+Y
+noremap <leader>d "+d
+noremap <leader>p "+p
 noremap <leader>ev :e ~/.vimrc<CR>
 noremap <leader>rv :source ~/.vimrc<CR>
 nnoremap ; :
 nnoremap ZZ :w<CR>
-
+nnoremap <F5> :buffers<CR>:buffer <SPACE>
+nnoremap <leader>f :Ag<CR>
+nnoremap <C-p>  :GFile<CR>
+nnoremap <leader>ls :Ex<CR>
+nnoremap <leader>gst Gstatus
+nnoremap <leader>ga Gwrite
+nnoremap <leader>gc Gread
+nnoremap <leader>gcm Gcommit
+nnoremap <leader>gd Gdiff
+nnoremap <leader>gp Gpush
+nnoremap <leader>gl Gpull
 inoremap ZZ <ESC>:w<CR>
+inoremap <leader>ls <ESC>:Ex<CR>
 
 cnoremap w!! w !sudo tee %>/dev/null
+
+
+autocmd BufEnter * silent! lcd %:p:h
 
 colorscheme gruvbox
 
