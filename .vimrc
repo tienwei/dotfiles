@@ -1,14 +1,15 @@
 set nocompatible 
+set t_Co=256
 set number
 set relativenumber
-set background=dark
+" set background=dark
 set pastetoggle=<F2>
 set tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab
 set path+=**
 set wildmenu
 set cc=+1
 set textwidth=80
-hi ColorColumn ctermbg=LightBlue guibg=red
+hi ColorColumn ctermfg=11 ctermbg=12 
 set cursorline
 set cursorcolumn
 
@@ -27,6 +28,7 @@ set wildignore=*.swp,*.bak,*.pyc
 set nobackup
 set noswapfile
 
+filetype plugin on
 " mappings
 let mapleader = ","
 
@@ -52,20 +54,18 @@ nnoremap <F5> :buffers<CR>:buffer <SPACE>
 nnoremap <leader>f :Ag<CR>
 nnoremap <C-p>  :GFile<CR>
 nnoremap <leader>ls :Ex<CR>
-nnoremap <leader>gst Gstatus
-nnoremap <leader>ga Gwrite
-nnoremap <leader>gc Gread
-nnoremap <leader>gcm Gcommit
-nnoremap <leader>gd Gdiff
-nnoremap <leader>gp Gpush
-nnoremap <leader>gl Gpull
+nnoremap <leader>gst :Gstatus<CR>
+nnoremap <leader>ga :Gwrite<CR>
+nnoremap <leader>gc :Gread<CR>
+nnoremap <leader>gcm :Gcommit<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gp :Gpush<CR>
+nnoremap <leader>gl :Gpull<CR>
 inoremap ZZ <ESC>:w<CR>
 inoremap <leader>ls <ESC>:Ex<CR>
 
 cnoremap w!! w !sudo tee %>/dev/null
 
-
-autocmd BufEnter * silent! lcd %:p:h
 
 colorscheme gruvbox
 
