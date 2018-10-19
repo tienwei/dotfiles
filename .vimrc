@@ -52,7 +52,8 @@ nnoremap ; :
 nnoremap ZZ :w<CR>
 nnoremap <F5> :buffers<CR>:buffer <SPACE>
 nnoremap <leader>f :Ag<CR>
-nnoremap <C-p>  :GFile<CR>
+nnoremap <C-p>  :GFiles<CR>
+nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>ls :Ex<CR>
 nnoremap <leader>gst :Gstatus<CR>
 nnoremap <leader>ga :Gwrite<CR>
