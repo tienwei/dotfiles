@@ -1,94 +1,154 @@
+"Tien's vimrc
+
+" Misc {{{
+set modelines=1
 set nocompatible 
-set t_Co=256
 set number
 set relativenumber
-" set background=dark
 set pastetoggle=<F2>
-set tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab
-set path+=**
-set wildmenu
-set cc=+1
-set textwidth=80
-hi ColorColumn ctermfg=11 ctermbg=12 
-set cursorline
-set cursorcolumn
+let mapleader = ","
+nnoremap ; :
+" }}}
 
-set hidden
+" Colour {{{
+colorscheme gruvbox
+" }}}
 
+" Tabs && Space {{{
+set tabstop=2 
+set softtabstop=2 
+set expandtab 
+set shiftwidth=2 
+set smarttab
 set autoindent
 set copyindent
+map  <F7> mzgg=G`z
+" }}}
+
+" File {{{
+set path+=**
+set hidden
+set lazyredraw
+set wildmenu
+set wildignore=*.swp,*.bak,*.pyc
+set nobackup
+set noswapfile
+"toggle undo tree
+nnoremap <leader>u :UndotreeToggle<CR>
+nnoremap <leader>ls :Ex<CR>
+inoremap <leader>ls <ESC>:Ex<CR>
+nnoremap ZZ :w<CR>
+inoremap ZZ <ESC>:w<CR>
+cnoremap w!! w !sudo tee %>/dev/null
+" }}}
+
+" Cursor and Color Column {{{
+set textwidth=80
+set colorcolumn=+1
+highligh colorcolumn ctermfg=11 ctermbg=12 
+set cursorline
+set cursorcolumn
+" }}}
+
+" Folding {{{
+set foldenable          " enable folding
+set foldnestmax=10      " 10 nested fold max
+nnoremap <SPACE> za
+" }}}
+
+" Search {{{
+let g:ag_working_path_mode="r"
 set showmatch
 set ignorecase
 set smartcase
 set hlsearch
 set incsearch
 set list
+nnoremap <leader><SPACE> :nohlsearch<CR>
+nnoremap <leader>f :Ag<CR>
+nnoremap <C-p>  :GFiles<CR>
+nnoremap <leader>b :Buffers<CR>
+" }}}
 
-set wildignore=*.swp,*.bak,*.pyc
-set nobackup
-set noswapfile
-
-filetype plugin on
-" mappings
-let mapleader = ","
-
+" Motions {{{
 map <up> <nop>
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
+nnoremap j gj
+nnoremap k gk
+nnoremap B ^
+nnoremap E $
+nnoremap $ <nop>
+nnoremap ^ <nop>
+" }}}
 
+" Windows {{{
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
-map  <F7> mzgg=G`z
+" }}}
 
+" Copy & Paste {{{
 noremap <leader>y "+Y
 noremap <leader>d "+d
 noremap <leader>p "+p
-noremap <leader>ev :e ~/.vimrc<CR>
+" }}}
+
+" Configurations {{{
+noremap <leader>ev :e ~/dotfiles/.vimrc<CR>
+noremap <leader>ez :e ~/dotfiles/.zshrc<CR>
 noremap <leader>rv :source ~/.vimrc<CR>
-nnoremap ; :
-nnoremap ZZ :w<CR>
-nnoremap <F5> :buffers<CR>:buffer <SPACE>
-nnoremap <leader>f :Ag<CR>
-nnoremap <C-p>  :GFiles<CR>
-nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>ls :Ex<CR>
-nnoremap <leader>gst :Gstatus<CR>
-nnoremap <leader>ga :Gwrite<CR>
-nnoremap <leader>gc :Gread<CR>
-nnoremap <leader>gcm :Gcommit<CR>
-nnoremap <leader>gd :Gdiff<CR>
-nnoremap <leader>gp :Gpush<CR>
-nnoremap <leader>gl :Gpull<CR>
-inoremap ZZ <ESC>:w<CR>
-inoremap <leader>ls <ESC>:Ex<CR>
+" }}}
 
-cnoremap w!! w !sudo tee %>/dev/null
+" Git Stuff {{{
+let g:gitgutter_max_signs = 500
+noremap <leader>gst :Gstatus<CR>
+noremap <leader>ga :Gwrite<CR>
+noremap <leader>gco :Gread<CR>
+noremap <leader>gcm :Gcommit<CR>
+noremap <leader>gd :Gdiff<CR>
+noremap <leader>gp :Gpush<CR>
+noremap <leader>gl :Gpull<CR>
+noremap <leader>>> :diffget //2 <BAR> diffup<CR>
+noremap <leader><< :diffget //3 <BAR> diffup<CR>
+" }}}
 
+" Tmux {{{
+" allows cursor change in tmux mode
+if exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+" }}}
 
-colorscheme gruvbox
-
+" Plugins {{{
+filetype plugin on
 call plug#begin('~/.vim/plugged')
 " post install (yarn install | npm install) then load plugin only for editing supported files
 Plug 'prettier/vim-prettier', {
       \ 'do': 'yarn install',
       \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown'] }
 
-" Plug 'vim-syntastic/syntastic'
+Plug 'neomake/neomake'
 Plug 'pangloss/vim-javascript'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
+Plug 'mbbill/undotree'
 call plug#end()
+" }}}
 
-" Prettier configs
+" Prettier configs {{{
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
+" }}}
 
-let g:ag_working_path_mode="r"
-let g:netrw_banner = 0
-let g:gitgutter_max_signs = 500
+
+" vim:foldmethod=marker:foldlevel=0
