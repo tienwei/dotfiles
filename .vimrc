@@ -26,6 +26,7 @@ map  <F7> mzgg=G`z
 " }}}
 
 " File {{{
+let g:netwr_banner = 0
 set path+=**
 set hidden
 set lazyredraw
@@ -142,6 +143,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'mbbill/undotree'
+Plug 'tpope/vim-commentary'
 call plug#end()
 " }}}
 
