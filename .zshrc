@@ -1,6 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export NVM_DIR=~/.nvm
+unset npm_config_prefix
 source $(brew --prefix nvm)/nvm.sh
 
 if [[ -a ~/.localrc ]]

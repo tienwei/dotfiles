@@ -8,6 +8,7 @@ set relativenumber
 set pastetoggle=<F2>
 let mapleader = ","
 nnoremap ; :
+noremap <C-c> <ESC>
 " }}}
 
 " Colour {{{
@@ -26,7 +27,7 @@ map  <F7> mzgg=G`z
 " }}}
 
 " File {{{
-let g:netwr_banner = 0
+let g:netrw_banner=0
 set path+=**
 set hidden
 set lazyredraw
