@@ -66,6 +66,8 @@ set smartcase
 set hlsearch
 set incsearch
 set list
+noremap ;; :%s:::g<Left><Left><Left>
+noremap ;' :%s:::cg<Left><Left><Left><Left>
 nnoremap <leader><SPACE> :nohlsearch<CR>
 nnoremap <leader>f :Ag<CR>
 nnoremap <C-p>  :GFiles<CR>
