@@ -1,3 +1,6 @@
+# Path to your oh-my-zsh configuration.
+ZSH=$HOME/.oh-my-zsh
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export NVM_DIR=~/.nvm
@@ -98,5 +101,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias nv="nvim"
 alias c="clear"
+alias tm="tmux"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
