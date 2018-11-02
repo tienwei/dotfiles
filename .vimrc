@@ -47,7 +47,7 @@ cnoremap w!! w !sudo tee %>/dev/null
 " Cursor and Color Column {{{
 set textwidth=80
 set colorcolumn=+1
-highligh colorcolumn ctermfg=11 ctermbg=12 
+highligh colorcolumn guibg=red 
 set cursorline
 set cursorcolumn
 " }}}
@@ -92,6 +92,8 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+set splitbelow
+set splitright
 " }}}
 
 " Copy & Paste {{{
