@@ -66,10 +66,20 @@ set smartcase
 set hlsearch
 set incsearch
 set list
+set inccommand=split
 nnoremap <leader><SPACE> :nohlsearch<CR>
 nnoremap <leader>f :Ag<CR>
 nnoremap <leader>g :GFiles<CR>
 nnoremap <leader>b :Buffers<CR>
+" }}}
+
+" Terminal {{{
+tnoremap <Esc> <C-\><C-n>
+tnoremap <M-[> <Esc>
+tnoremap <M-h> <C-\><C-n><C-w>h
+tnoremap <M-j> <C-\><C-n><C-w>j
+tnoremap <M-k> <C-\><C-n><C-w>k
+tnoremap <M-l> <C-\><C-n><C-w>l
 " }}}
 
 " Motions {{{
@@ -86,10 +96,10 @@ nnoremap ^ <nop>
 " }}}
 
 " Windows {{{
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+nnoremap <M-h> <C-w>h
+nnoremap <M-j> <C-w>j
+nnoremap <M-k> <C-w>k
+nnoremap <M-l> <C-w>l
 set splitbelow
 set splitright
 " }}}
