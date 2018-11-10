@@ -70,7 +70,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
-
+source ~/.bin/tmuxinator.zsh
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -101,6 +101,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias nv="nvim"
 alias c="clear"
-alias tm="tmux"
+alias t="tmux"
+alias tm="tmuxinator"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
