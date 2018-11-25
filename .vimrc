@@ -157,6 +157,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-unimpaired'
 call plug#end()
 " }}}
 
