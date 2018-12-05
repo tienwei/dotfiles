@@ -117,6 +117,7 @@ noremap <leader>p "+p
 " }}}
 
 " Configurations {{{
+let g:ale_fix_on_save = 1
 noremap <leader>ev :e ~/dotfiles/.vimrc<CR>
 noremap <leader>ez :e ~/dotfiles/.zshrc<CR>
 noremap <leader>rv :source ~/.vimrc<CR>
@@ -164,6 +165,9 @@ Plug 'junegunn/gv.vim'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'w0rp/ale'
 call plug#end()
 " }}}
 
