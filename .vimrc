@@ -61,16 +61,22 @@ nnoremap <SPACE> za
 " Search {{{
 let g:ag_working_path_mode="r"
 set showmatch
+set scrolloff=5
 set ignorecase
 set smartcase
 set hlsearch
 set incsearch
 set list
-set inccommand=split
 nnoremap <leader><SPACE> :nohlsearch<CR>
 nnoremap <leader>f :Ag<CR>
 nnoremap <leader>g :GFiles<CR>
 nnoremap <leader>b :Buffers<CR>
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
 " }}}
 
 " Terminal {{{

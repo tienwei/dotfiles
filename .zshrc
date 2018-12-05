@@ -70,7 +70,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
-source ~/.bin/tmuxinator.zsh
+source ~/.local/tmuxinator.zsh
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
