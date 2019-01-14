@@ -28,6 +28,7 @@ map  <F7> mzgg=G`z
 
 " File {{{
 let g:netrw_banner=0
+let g:netrw_localrmdir='rm -r'
 set path+=**
 set hidden
 set lazyredraw
@@ -53,6 +54,7 @@ set cursorcolumn
 " }}}
 
 " Folding {{{
+setlocal foldmethod=indent
 set foldenable          " enable folding
 set foldnestmax=10      " 10 nested fold max
 nnoremap <SPACE> za
@@ -68,7 +70,7 @@ set hlsearch
 set incsearch
 set list
 nnoremap <leader><SPACE> :nohlsearch<CR>
-nnoremap <leader>f :Ag<CR>
+nnoremap <leader>f :Rg<CR>
 nnoremap <leader>g :GFiles<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap n nzz
@@ -86,6 +88,14 @@ tnoremap <M-h> <C-\><C-n><C-w>h
 tnoremap <M-j> <C-\><C-n><C-w>j
 tnoremap <M-k> <C-\><C-n><C-w>k
 tnoremap <M-l> <C-\><C-n><C-w>l
+" }}}
+
+" Status Bar {{{
+set statusline=%f         " Path to the file
+set statusline+=%=        " Switch to the right side
+set statusline+=%l        " Current line
+set statusline+=/         " Separator
+set statusline+=%L        " Total lines
 " }}}
 
 " Motions {{{
@@ -168,7 +178,12 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'w0rp/ale'
+Plug 'maxbrunsfeld/vim-yankstack'
 call plug#end()
+
+call yankstack#setup()
+nmap Y y$
+let g:yankstack_yank_keys = ['y', 'd']
 " }}}
 
 " Prettier configs {{{
