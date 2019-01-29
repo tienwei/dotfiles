@@ -54,7 +54,6 @@ set cursorcolumn
 " }}}
 
 " Folding {{{
-setlocal foldmethod=indent
 set foldenable          " enable folding
 set foldnestmax=10      " 10 nested fold max
 nnoremap <SPACE> za
@@ -96,6 +95,7 @@ set statusline+=%=        " Switch to the right side
 set statusline+=%l        " Current line
 set statusline+=/         " Separator
 set statusline+=%L        " Total lines
+set statusline+=%{gutentags#statusline()}
 " }}}
 
 " Motions {{{
@@ -179,11 +179,16 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'w0rp/ale'
 Plug 'maxbrunsfeld/vim-yankstack'
+Plug 'fatih/vim-go'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'JamshedVesuna/vim-markdown-preview'
 call plug#end()
 
 call yankstack#setup()
 nmap Y y$
 let g:yankstack_yank_keys = ['y', 'd']
+let g:gutentags_ctags_exclude = ['./node_modules', '.*']
+let vim_markdown_preview_hotkey='<C-m>'
 " }}}
 
 " Prettier configs {{{
