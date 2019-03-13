@@ -182,6 +182,7 @@ Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'fatih/vim-go'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'morhetz/gruvbox'
 call plug#end()
 
 call yankstack#setup()
