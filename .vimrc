@@ -11,9 +11,6 @@ nnoremap ; :
 noremap <C-c> <ESC>
 " }}}
 
-" Colour {{{
-colorscheme gruvbox
-" }}}
 
 " Tabs && Space {{{
 set tabstop=2 
@@ -190,6 +187,10 @@ nmap Y y$
 let g:yankstack_yank_keys = ['y', 'd']
 let g:gutentags_ctags_exclude = ['./node_modules', '.*']
 let vim_markdown_preview_hotkey='<C-m>'
+" }}}
+
+" Colour {{{
+colorscheme gruvbox
 " }}}
 
 " Prettier configs {{{
