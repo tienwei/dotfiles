@@ -1,7 +1,8 @@
+export TERM="xterm-256color" 
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
-
-source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
+ZSH_CUSTOM=/usr/local/opt/powerlevel9k
+ZSH_THEME=powerlevel9k
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -19,8 +20,21 @@ export EDITOR='nvim'
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="powerlevel9k/powerlevel9k"
+# ZSH_THEME="powerlevel9k/powerlevel9k"
 
+initSetup() {
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  brew install nvm
+  brew install neovim
+  brew install ctags
+  brew install tmux
+  brew install fzf
+  brew install ripgrep
+  brew install fd
+  brew install powerlevel9k
+  brew install markdown
+  gem install tmuxinator
+}
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
 # cause zsh load theme from this variable instead of
