@@ -33,7 +33,10 @@ initSetup() {
   brew install fd
   brew install powerlevel9k
   brew install markdown
-  gem install tmuxinator
+  # brew install gpg
+  # curl -sSL https://rvm.io/mpapis.asc | gpg --import
+  # curl -L https://get.rvm.io | bash -s stable
+  sudo gem install tmuxinator
 }
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random

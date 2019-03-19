@@ -11,7 +11,6 @@ nnoremap ; :
 noremap <C-c> <ESC>
 " }}}
 
-
 " Tabs && Space {{{
 set tabstop=2 
 set softtabstop=2 
@@ -33,6 +32,8 @@ set wildmenu
 set wildignore=*.swp,*.bak,*.pyc
 set nobackup
 set noswapfile
+"typescript
+autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
 "toggle undo tree
 nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>ls :Ex<CR>
@@ -180,6 +181,7 @@ Plug 'fatih/vim-go'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'morhetz/gruvbox'
+Plug 'leafgarland/typescript-vim'
 call plug#end()
 
 call yankstack#setup()
