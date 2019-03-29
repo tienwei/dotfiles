@@ -182,6 +182,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'morhetz/gruvbox'
 Plug 'leafgarland/typescript-vim'
+Plug 'neovimhaskell/haskell-vim'
 call plug#end()
 
 call yankstack#setup()
