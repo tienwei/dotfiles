@@ -182,7 +182,31 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'morhetz/gruvbox'
 Plug 'leafgarland/typescript-vim'
+Plug 'reasonml-editor/vim-reason-plus'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
+" for neovim
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" for vim 8 with python
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+  " the path to python3 is obtained through executing `:echo exepath('python3')` in vim
+  let g:python3_host_prog = "/usr/local/opt/python/libexec/bin/python"
+endif
 call plug#end()
+
+let g:LanguageClient_serverCommands = {
+    \ 'reason': ['~/reason-Language-server/reason-language-server.exe'],
+    \ }
+
+" enable autocomplete
+let g:deoplete#enable_at_startup = 1
 
 call yankstack#setup()
 nmap Y y$

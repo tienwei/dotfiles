@@ -31,6 +31,7 @@ initSetup() {
   brew install fzf
   brew install ripgrep
   brew install fd
+  brew install prettier
   brew install powerlevel9k
   brew install markdown
   # brew install gpg
@@ -98,6 +99,9 @@ source ~/.local/tmuxinator.zsh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
+# fzf custom
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --ignore node_modules'
+
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
@@ -123,5 +127,8 @@ alias nv="nvim"
 alias c="clear"
 alias t="tmux"
 alias tm="tmuxinator"
+
+export PATH="/usr/local/opt/curl/bin:$PATH"
+export PATH="/usr/local/bin:/usr/local/opt/python/libexec/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
