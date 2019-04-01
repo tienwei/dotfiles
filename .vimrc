@@ -199,6 +199,7 @@ else
   " the path to python3 is obtained through executing `:echo exepath('python3')` in vim
   let g:python3_host_prog = "/usr/local/opt/python/libexec/bin/python"
 endif
+Plug 'neovimhaskell/haskell-vim'
 call plug#end()
 
 let g:LanguageClient_serverCommands = {
