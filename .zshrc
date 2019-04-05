@@ -134,3 +134,5 @@ export PATH="/usr/local/bin$PATH"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH"
+
+eval "$(pyenv init -)" 
