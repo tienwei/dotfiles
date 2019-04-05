@@ -129,6 +129,8 @@ alias t="tmux"
 alias tm="tmuxinator"
 
 export PATH="/usr/local/opt/curl/bin:$PATH"
-export PATH="/usr/local/bin:/usr/local/opt/python/libexec/bin:$PATH"
+export PATH="/usr/local/bin$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH"

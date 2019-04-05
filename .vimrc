@@ -197,7 +197,7 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
   " the path to python3 is obtained through executing `:echo exepath('python3')` in vim
-  let g:python3_host_prog = "/usr/local/opt/python/libexec/bin/python"
+  let g:python3_host_prog = "/Users/tien/.pyenv/shims/python3"
 endif
 Plug 'neovimhaskell/haskell-vim'
 call plug#end()
