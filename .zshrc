@@ -34,6 +34,8 @@ initSetup() {
   brew install prettier
   brew install powerlevel9k
   brew install markdown
+  brew install pyenv
+  brew install pyenv-virtualenv
   # brew install gpg
   # curl -sSL https://rvm.io/mpapis.asc | gpg --import
   # curl -L https://get.rvm.io | bash -s stable
@@ -136,3 +138,4 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH"
 
 eval "$(pyenv init -)" 
+eval "$(pyenv virtualenv-init -)"

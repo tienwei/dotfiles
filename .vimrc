@@ -67,7 +67,8 @@ set hlsearch
 set incsearch
 set list
 nnoremap <leader><SPACE> :nohlsearch<CR>
-nnoremap <leader>f :Rg<CR>
+" nnoremap <leader>f :Rg<CR>
+nnoremap <leader>f :Rp<SPACE>
 nnoremap <leader>g :GFiles<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap n nzz
@@ -197,7 +198,7 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
   " the path to python3 is obtained through executing `:echo exepath('python3')` in vim
-  let g:python3_host_prog = "/Users/tien/.pyenv/shims/python3"
+  let g:python3_host_prog = "/Users/tien-weilin/.pyenv/versions/neovim3/bin/python3"
 endif
 Plug 'neovimhaskell/haskell-vim'
 call plug#end()
@@ -205,7 +206,6 @@ call plug#end()
 let g:LanguageClient_serverCommands = {
     \ 'reason': ['~/reason-Language-server/reason-language-server.exe'],
     \ }
-
 " enable autocomplete
 let g:deoplete#enable_at_startup = 1
 
@@ -214,6 +214,22 @@ nmap Y y$
 let g:yankstack_yank_keys = ['y', 'd']
 let g:gutentags_ctags_exclude = ['./node_modules', '.*']
 let vim_markdown_preview_hotkey='<C-m>'
+
+" fzf
+command! -bang Colors
+  \ call fzf#vim#colors({'left': '15%', 'options': '--reverse --margin 30%,0'}, <bang>0)
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>,
+  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \                 <bang>0)
+command! -nargs=+ -complete=file Rp call tien#custom#rg_raw(<q-args>)
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
 " }}}
 
 " Colour {{{
