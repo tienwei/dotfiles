@@ -6,6 +6,9 @@ set nocompatible
 set number
 set relativenumber
 set pastetoggle=<F2>
+set tags=./tags,tags;$HOME
+set modifiable
+setlocal buftype=
 let mapleader = ","
 nnoremap ; :
 noremap <C-c> <ESC>
@@ -25,6 +28,7 @@ map  <F7> mzgg=G`z
 " File {{{
 let g:netrw_banner=0
 let g:netrw_localrmdir='rm -r'
+let g:netrw_keepdir=0
 set path+=**
 set hidden
 set lazyredraw
@@ -208,11 +212,27 @@ let g:LanguageClient_serverCommands = {
     \ }
 " enable autocomplete
 let g:deoplete#enable_at_startup = 1
+nnoremap <silent> gf :call LanguageClient#textDocument_formatting()<cr>
+cnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+
+" Asynchronous Lint Engine (ALE)
+" Limit linters used for JavaScript.
+let g:ale_linters = {
+    \ 'javascript': ['flow'] 
+    \ }
+highlight clear ALEErrorSign " otherwise uses error bg color (typically red)
+highlight clear ALEWarningSign " otherwise uses error bg color (typically red)
+let g:ale_sign_error = 'T' " could use emoji
+let g:ale_sign_warning = '?' " could use emoji
+let g:ale_statusline_format = ['X %d', '? %d', '']
+" %linter% is the name of the linter that provided the message
+" %s is the error or warning message
+let g:ale_echo_msg_format = '%linter% says %s'
 
 call yankstack#setup()
 nmap Y y$
 let g:yankstack_yank_keys = ['y', 'd']
-let g:gutentags_ctags_exclude = ['./node_modules', '.*']
+let g:gutentags_ctags_exclude = ['./node_modules']
 let vim_markdown_preview_hotkey='<C-m>'
 
 " fzf
@@ -239,6 +259,8 @@ colorscheme gruvbox
 " Prettier configs {{{
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
+let g:prettier#config#semi = 'false'
+let g:prettier#config#trailing_comma = 'none'
 " }}}
 
 

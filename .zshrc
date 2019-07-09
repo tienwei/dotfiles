@@ -129,6 +129,7 @@ alias nv="nvim"
 alias c="clear"
 alias t="tmux"
 alias tm="tmuxinator"
+alias ggraph="git log --all --decorate --oneline --graph"
 
 export PATH="/usr/local/opt/curl/bin:$PATH"
 export PATH="/usr/local/bin$PATH"
