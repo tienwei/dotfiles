@@ -1,6 +1,8 @@
 "Tien's vimrc
 
 " Misc {{{
+syntax on
+filetype plugin indent on
 set modelines=1
 set nocompatible 
 set number
@@ -164,34 +166,37 @@ endif
 filetype plugin on
 call plug#begin('~/.vim/plugged')
 " post install (yarn install | npm install) then load plugin only for editing supported files
-Plug 'prettier/vim-prettier', {
-      \ 'do': 'yarn install',
-      \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown'] }
 
-Plug 'neomake/neomake'
-Plug 'pangloss/vim-javascript'
 Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
-Plug 'junegunn/gv.vim'
-Plug 'mbbill/undotree'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'w0rp/ale'
-Plug 'maxbrunsfeld/vim-yankstack'
-Plug 'fatih/vim-go'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'JamshedVesuna/vim-markdown-preview'
-Plug 'morhetz/gruvbox'
-Plug 'leafgarland/typescript-vim'
-Plug 'reasonml-editor/vim-reason-plus'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
+Plug 'Chiel92/vim-autoformat'
+Plug 'fatih/vim-go'
+Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/gv.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'maxbrunsfeld/vim-yankstack'
+Plug 'mbbill/undotree'
+Plug 'morhetz/gruvbox'
+Plug 'neomake/neomake'
+Plug 'neovimhaskell/haskell-vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'pangloss/vim-javascript'
+Plug 'prettier/vim-prettier', {
+      \ 'do': 'yarn install',
+      \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown'] }
+Plug 'reasonml-editor/vim-reason-plus'
+Plug 'w0rp/ale'
+
 
 " for neovim
 if has('nvim')
@@ -218,13 +223,17 @@ cnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 " Asynchronous Lint Engine (ALE)
 " Limit linters used for JavaScript.
 let g:ale_linters = {
-    \ 'javascript': ['flow'] 
+    \ 'javascript': ['flow','typescript'] 
+    \ }
+let g:ale_fixers = {
+    \ 'javascript': ['prettier', 'eslint']
     \ }
 highlight clear ALEErrorSign " otherwise uses error bg color (typically red)
 highlight clear ALEWarningSign " otherwise uses error bg color (typically red)
-let g:ale_sign_error = 'T' " could use emoji
+let g:ale_sign_error = 'X' " could use emoji
 let g:ale_sign_warning = '?' " could use emoji
 let g:ale_statusline_format = ['X %d', '? %d', '']
+let g:ale_fix_on_save = 1
 " %linter% is the name of the linter that provided the message
 " %s is the error or warning message
 let g:ale_echo_msg_format = '%linter% says %s'
@@ -261,6 +270,23 @@ let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
 let g:prettier#config#semi = 'false'
 let g:prettier#config#trailing_comma = 'none'
+" }}}
+
+" Formatter {{{
+autocmd BufWrite *.hs :Autoformat
+" Don't automatically indent on save, since vim's autoindent for haskell is buggy
+autocmd FileType haskell let b:autoformat_autoindent=0
+" }}}
+
+" Haskell {{{
+let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
+setlocal formatprg=hindent
 " }}}
 
 
