@@ -242,6 +242,7 @@ let g:ale_echo_msg_format = '%linter% says %s'
 call yankstack#setup()
 nmap Y y$
 let g:yankstack_yank_keys = ['y', 'd']
+let g:gutentags_generate_on_write = 0
 let g:gutentags_ctags_exclude = ['./node_modules']
 let vim_markdown_preview_hotkey='<C-m>'
 
