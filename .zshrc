@@ -15,6 +15,8 @@ then
   source ~/.localrc
 fi
 
+source ~/.bin/tmuxinator.zsh
+
 export EDITOR='nvim'
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -35,7 +37,9 @@ initSetup() {
   brew install powerlevel9k
   brew install markdown
   brew install pyenv
+  brew install reattach-to-user-namespace
   brew install pyenv-virtualenv
+  pip3 install pynvim
   # brew install gpg
   # curl -sSL https://rvm.io/mpapis.asc | gpg --import
   # curl -L https://get.rvm.io | bash -s stable
@@ -140,3 +144,6 @@ export PATH="$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH"
 
 eval "$(pyenv init -)" 
 eval "$(pyenv virtualenv-init -)"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
