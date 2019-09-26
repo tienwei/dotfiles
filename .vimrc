@@ -197,27 +197,14 @@ Plug 'prettier/vim-prettier', {
       \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown'] }
 Plug 'reasonml-editor/vim-reason-plus'
 Plug 'w0rp/ale'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-
-" for neovim
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" for vim 8 with python
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-  " the path to python3 is obtained through executing `:echo exepath('python3')` in vim
-  let g:python3_host_prog = "/Users/tien-weilin/.pyenv/versions/neovim3/bin/python3"
-endif
 Plug 'neovimhaskell/haskell-vim'
 call plug#end()
 
-let g:LanguageClient_serverCommands = {
-    \ 'reason': ['~/reason-Language-server/reason-language-server.exe'],
-    \ }
-" enable autocomplete
-let g:deoplete#enable_at_startup = 1
+" let g:LanguageClient_serverCommands = {
+"     \ 'reason': ['~/reason-Language-server/reason-language-server.exe'],
+"     \ }
 nnoremap <silent> gf :call LanguageClient#textDocument_formatting()<cr>
 cnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 
