@@ -45,8 +45,8 @@ autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
 nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>ls :Ex<CR>
 inoremap <leader>ls <ESC>:Ex<CR>
-nnoremap ZZ :w<CR>
-inoremap ZZ <ESC>:w<CR>
+nnoremap SS :w<CR>
+inoremap SS <ESC>:w<CR>
 cnoremap w!! w !sudo tee %>/dev/null
 " }}}
 
@@ -74,8 +74,8 @@ set hlsearch
 set incsearch
 set list
 nnoremap <leader><SPACE> :nohlsearch<CR>
-" nnoremap <leader>f :Rg<CR>
-nnoremap <leader>f :Rp<SPACE>
+nnoremap <leader>f :Rg<CR>
+" nnoremap <leader>f :Rp<SPACE>
 nnoremap <leader>g :GFiles<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap n nzz
@@ -200,6 +200,7 @@ Plug 'w0rp/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'neovimhaskell/haskell-vim'
+Plug 'alx741/vim-hindent'
 call plug#end()
 
 " let g:LanguageClient_serverCommands = {
@@ -221,7 +222,7 @@ highlight clear ALEWarningSign " otherwise uses error bg color (typically red)
 let g:ale_sign_error = 'X' " could use emoji
 let g:ale_sign_warning = '?' " could use emoji
 let g:ale_statusline_format = ['X %d', '? %d', '']
-let g:ale_fix_on_save = 1
+" let g:ale_fix_on_save = 1
 " %linter% is the name of the linter that provided the message
 " %s is the error or warning message
 let g:ale_echo_msg_format = '%linter% says %s'

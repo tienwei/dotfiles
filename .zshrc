@@ -28,9 +28,10 @@ initSetup() {
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   brew install nvm
   brew install neovim
-  brew install ctags
+  # brew install ctags
   brew install tmux
   brew install fzf
+  $(brew --prefix)/opt/fzf/install
   brew install ripgrep
   brew install fd
   brew install prettier
@@ -40,10 +41,15 @@ initSetup() {
   brew install reattach-to-user-namespace
   brew install pyenv-virtualenv
   pip3 install pynvim
+  brew tap homebrew/cask-fonts
+  brew cask install font-hack-nerd-font
   # brew install gpg
   # curl -sSL https://rvm.io/mpapis.asc | gpg --import
-  # curl -L https://get.rvm.io | bash -s stable
+  curl -L https://get.rvm.io | bash -s stable
   sudo gem install tmuxinator
+  brew install haskell-stack
+  stack install stylish-haskell
+  stack install hindent
 }
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -147,3 +153,5 @@ eval "$(pyenv virtualenv-init -)"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
