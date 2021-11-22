@@ -1,4 +1,4 @@
-"Tien's vimrc
+"Tiens vimrc
 
 " Misc {{{
 syntax on
@@ -8,7 +8,7 @@ set nocompatible
 set number
 set relativenumber
 set pastetoggle=<F2>
-set tags=./tags,tags;$HOME
+" set tags=./tags,tags;$HOME
 set modifiable
 setlocal buftype=
 let mapleader = ","
@@ -41,6 +41,8 @@ set nobackup
 set noswapfile
 "typescript
 autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 "toggle undo tree
 nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>ls :Ex<CR>
@@ -101,7 +103,7 @@ set statusline+=%=        " Switch to the right side
 set statusline+=%l        " Current line
 set statusline+=/         " Separator
 set statusline+=%L        " Total lines
-set statusline+=%{gutentags#statusline()}
+" set statusline+=%{gutentags#statusline()}
 " }}}
 
 " Motions {{{
@@ -180,7 +182,8 @@ Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/gv.vim'
 Plug 'leafgarland/typescript-vim'
-Plug 'ludovicchabant/vim-gutentags'
+Plug 'peitalin/vim-jsx-typescript'
+" Plug 'ludovicchabant/vim-gutentags'
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'mbbill/undotree'
 Plug 'morhetz/gruvbox'
@@ -192,20 +195,12 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'pangloss/vim-javascript'
-Plug 'prettier/vim-prettier', {
-      \ 'do': 'yarn install',
-      \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown'] }
-Plug 'reasonml-editor/vim-reason-plus'
 Plug 'w0rp/ale'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 Plug 'neovimhaskell/haskell-vim'
 Plug 'alx741/vim-hindent'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
-" let g:LanguageClient_serverCommands = {
-"     \ 'reason': ['~/reason-Language-server/reason-language-server.exe'],
-"     \ }
 nnoremap <silent> gf :call LanguageClient#textDocument_formatting()<cr>
 cnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 
@@ -222,7 +217,7 @@ highlight clear ALEWarningSign " otherwise uses error bg color (typically red)
 let g:ale_sign_error = 'X' " could use emoji
 let g:ale_sign_warning = '?' " could use emoji
 let g:ale_statusline_format = ['X %d', '? %d', '']
-" let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 1
 " %linter% is the name of the linter that provided the message
 " %s is the error or warning message
 let g:ale_echo_msg_format = '%linter% says %s'
@@ -230,8 +225,8 @@ let g:ale_echo_msg_format = '%linter% says %s'
 call yankstack#setup()
 nmap Y y$
 let g:yankstack_yank_keys = ['y', 'd']
-let g:gutentags_generate_on_write = 0
-let g:gutentags_ctags_exclude = ['./node_modules']
+" let g:gutentags_generate_on_write = 0
+" let g:gutentags_ctags_exclude = ['./node_modules']
 let vim_markdown_preview_hotkey='<C-m>'
 
 " fzf
@@ -249,17 +244,20 @@ command! -bang -nargs=* Rg
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
+" coc 
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+vmap FF  :Prettier<Enter>
+nmap FF  :Prettier<Enter>
+" nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gr <Plug>(coc-references)
+" nmap <silent> [g <Plug>(coc-diagnostic-prev)
+" nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
 " }}}
 
 " Colour {{{
 colorscheme gruvbox
-" }}}
-
-" Prettier configs {{{
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md PrettierAsync
-let g:prettier#config#semi = 'false'
-let g:prettier#config#trailing_comma = 'none'
 " }}}
 
 " Formatter {{{
